@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bot"
+        android:padding="10dp"
+        android:layout_marginEnd="80dp">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/botimg"
+            android:src="@drawable/chatbot"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/left_chat_view"
+        android:background="@drawable/rounded_corner2"
+        android:backgroundTint="?attr/colorOnBackground"
+        android:padding="10dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginStart="55dp">
+
+        <TextView
+            android:id="@+id/left_chat_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:fontFamily="@font/nunitoregular"
+            android:textColor="?attr/colorAccent"
+            android:textColorLink="@color/blue"
+            android:textSize="15sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/right_chat_view"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/rounded_corner1"
+        android:backgroundTint="?attr/colorContainer"
+        android:padding="10dp"
+        android:layout_marginStart="80dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunitoregular"
+            android:autoLink="web"
+            android:textColorLink="@color/blue"
+            android:id="@+id/right_chat_text_view"
+            android:textColor="?attr/colorAccent"
+            android:textSize="15sp" />
+    </LinearLayout>
+</RelativeLayout>

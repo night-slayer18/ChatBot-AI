@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">IntraBot</string>
+    <string name="sp1">IntraBot</string>
+    <string name="sp2">IntraBot</string>
+    <string name="sp3"></string>
+    <string name="your_ai_assistant">Your AI Assistant</string>
+    <string name="using_this_software_you_can_ask_you_questions_and_receive_articles_using_artificial_intelligence_assistant">Using this software,you can ask you questions and receive articles using artificial intelligence assistant</string>
+    <string name="explain_quantum_physics">Explain Quantum physics</string>
+    <string name="what_are_blackholes">What are Blackholes</string>
+    <string name="write_a_tweet_about_global_warming">Write a tweet about global warming</string>
+    <string name="write_a_rap_song_lyrics_about">Write a rap song lyrics about</string>
+    <string name="queries_here">Queries Here</string>
+</resources>

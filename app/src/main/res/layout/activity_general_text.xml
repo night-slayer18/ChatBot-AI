@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorOnPrimary"
+    tools:context=".GeneralTextActivity">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.091"
+        app:srcCompat="@drawable/line" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="30sp"
+        android:layout_height="30sp"
+        android:background="@drawable/back_button"
+        app:layout_constraintBottom_toBottomOf="@id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:background="@drawable/volume_button"
+        app:layout_constraintBottom_toBottomOf="@id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.091"
+        app:srcCompat="@drawable/line" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="31dp"
+        android:layout_height="41dp"
+        app:layout_constraintBottom_toBottomOf="@id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/bot" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="87dp"
+        android:layout_height="52dp"
+        app:layout_constraintBottom_toBottomOf="@id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8"
+        app:srcCompat="@drawable/gpt" />
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imageView10"-->
+    <!--        android:layout_width="62sp"-->
+    <!--        android:layout_height="23sp"-->
+    <!--        android:layout_marginStart="12dp"-->
+    <!--        android:layout_marginBottom="9dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.382"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.057"-->
+    <!--        app:srcCompat="@drawable/on" />-->
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:background="@drawable/upload_button"
+        app:layout_constraintBottom_toBottomOf="@id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".5" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.118"
+        app:srcCompat="@drawable/explain_image" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ex1"
+        android:layout_width="245dp"
+        android:layout_height="44dp"
+        android:background="@drawable/button_border"
+        android:text="@string/explain_quantum_physics"
+        android:textColor="?attr/colorAccent"
+        android:textAllCaps="false"
+        android:fontFamily="@font/nunitoregular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.215" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ex2"
+        android:layout_width="245dp"
+        android:layout_height="44dp"
+        android:background="@drawable/button_border"
+        android:text="@string/what_are_blackholes"
+        android:textColor="?attr/colorAccent"
+        android:textAllCaps="false"
+        android:fontFamily="@font/nunitoregular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="85sp"
+        android:layout_height="80sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.39"
+        app:srcCompat="@drawable/edit_image" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/wr1"
+        android:layout_width="303dp"
+        android:layout_height="44dp"
+        android:background="@drawable/button_border"
+        android:text="@string/write_a_tweet_about_global_warming"
+        android:textColor="?attr/colorAccent"
+        android:textAllCaps="false"
+        android:fontFamily="@font/nunitoregular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/wr2"
+        android:layout_width="303dp"
+        android:layout_height="44dp"
+        android:background="@drawable/button_border"
+        android:text="@string/write_a_rap_song_lyrics_about"
+        android:textAllCaps="false"
+        android:textColor="?attr/colorAccent"
+        android:fontFamily="@font/nunitoregular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.565" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="65sp"
+        android:layout_height="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.665"
+        app:srcCompat="@drawable/translate_image" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/tr1"
+        android:layout_width="323dp"
+        android:layout_height="44dp"
+        android:background="@drawable/button_border"
+        android:text="How to say 'How are you' in Korean?"
+        android:textAllCaps="false"
+        android:textColor="?attr/colorAccent"
+        android:fontFamily="@font/nunitoregular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.75" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/tr2"
+        android:layout_width="323dp"
+        android:layout_height="44dp"
+        android:background="@drawable/button_border"
+        android:text="Write a poem about flower and love"
+        android:textColor="?attr/colorAccent"
+        android:textAllCaps="false"
+        android:fontFamily="@font/nunitoregular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.835" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/continue_btn"
+        android:layout_width="239dp"
+        android:layout_height="45dp"
+        android:background="@drawable/button_shape"
+        android:text="Continue"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:fontFamily="@font/nunitobold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.94" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

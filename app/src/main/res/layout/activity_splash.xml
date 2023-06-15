@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/ivCountryImage"
-        android:layout_width="250dp"
-        android:layout_height="220dp"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,7 +22,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Powered By JNSV"
+        android:text="from\nJNSV"
         android:fontFamily="@font/nunitoregular"
         android:textSize="12.5dp"
         android:textColor="#757575"

@@ -1,10 +1,14 @@
 package com.example.loginscreen.adapter;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,8 +19,10 @@ import java.util.List;
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHolder> {
 
     List<Message> messageList;
-    public MessageAdapter(List<Message> messageList) {
+    Context context;
+    public MessageAdapter(List<Message> messageList, Context context) {
         this.messageList = messageList;
+        this.context = context;
     }
 
     @NonNull
@@ -59,6 +65,31 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
             rightChatView = itemView.findViewById(R.id.right_chat_view);
             leftTextView = itemView.findViewById(R.id.left_chat_text_view);
             rightTextView = itemView.findViewById(R.id.right_chat_text_view);
+
+            leftTextView.setOnLongClickListener(v -> {
+
+                String copy_left_text = leftTextView.getText().toString();
+
+                ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("TextView Text", copy_left_text);
+                if (clipboard != null) {
+                    clipboard.setPrimaryClip(clipData);
+                    Toast.makeText(context, "Text copied to clipboard", Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            });
+            rightTextView.setOnLongClickListener(v -> {
+
+                String copy_right_text = rightTextView.getText().toString();
+
+                ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("TextView Text", copy_right_text);
+                if (clipboard != null) {
+                    clipboard.setPrimaryClip(clipData);
+                    Toast.makeText(context, "Text copied to clipboard", Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            });
         }
     }
 }

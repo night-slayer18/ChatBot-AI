@@ -1,6 +1,8 @@
 package com.example.loginscreen;
 
+import android.os.Handler;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -16,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.loginscreen.adapter.Message;
 import com.example.loginscreen.adapter.MessageAdapter;
+import com.example.loginscreen.model.LoginResponse;
 import com.example.loginscreen.network.SessionManager;
 
 import org.json.JSONArray;
@@ -42,8 +47,8 @@ public class RasaActivity extends AppCompatActivity {
     List<Message> messageList;
     MessageAdapter messageAdapter;
     Button bck,vol,up,logout_rasa;
-    Boolean mode;
 
+    int intro_flag=0;
     public static final MediaType JSON
             = MediaType.get("application/json; charset=utf-8");
     OkHttpClient client = new OkHttpClient();
@@ -60,14 +65,19 @@ public class RasaActivity extends AppCompatActivity {
         logout_rasa=findViewById(R.id.log2);
 
         //setup recycler view
-        messageAdapter = new MessageAdapter(messageList);
+        messageAdapter = new MessageAdapter(messageList,this);
         recyclerView.setAdapter(messageAdapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setStackFromEnd(true);
+//        llm.setStackFromEnd(true);
+        llm.setReverseLayout(false);
         recyclerView.setLayoutManager(llm);
 
         if (AcademicsTextActivity.flag2==1) {
             AcademicsTextActivity.flag2=0;
+            intro_flag = 1;
+            String intro;
+            intro = "Hi, I'm IntraBot \nAn AI chatbot here to help you with you academics details\nHow may i help you?";
+            addToChat(intro, Message.SENT_BY_BOT);
             String question = AcademicsTextActivity.text2.trim();
             addToChat(question,Message.SENT_BY_ME);
             messageEditText.setText("");
@@ -85,6 +95,12 @@ public class RasaActivity extends AppCompatActivity {
             overridePendingTransition(0,0);
             finish();
         }));
+
+        if(intro_flag==0) {
+            String intro;
+            intro = "Hi, I'm IntraBot \nAn AI chatbot here to help you with you academics details\nHow may i help you?";
+            new Handler().postDelayed(() -> addToChat(intro, Message.SENT_BY_BOT), 1000);
+        }
 
         vol.setOnClickListener(v -> {
             int nightModeFlags =  v.getContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
@@ -121,7 +137,13 @@ public class RasaActivity extends AppCompatActivity {
             }
         });
     }
-    void addToChat(String message,String sentBy){
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+    }
+
+    void addToChat(String message, String sentBy){
         runOnUiThread(() -> {
             messageList.add(new Message(message,sentBy));
             messageAdapter.notifyDataSetChanged();
@@ -137,17 +159,19 @@ public class RasaActivity extends AppCompatActivity {
     void callAPI(String question){
         //okhttp
         messageList.add(new Message("Typing... ",Message.SENT_BY_BOT));
-
         JSONObject jsonBody = new JSONObject();
+        String username;
+        username = SessionManager.INSTANCE.getUserName(this);
+        Log.d("username",username);
         try {
-            jsonBody.put("sender","user");
+            jsonBody.put("sender",username);
             jsonBody.put("message",question);
         } catch (JSONException e) {
             e.printStackTrace();
         }
         RequestBody body = RequestBody.create(jsonBody.toString(),JSON);
         Request request = new Request.Builder()
-                .url("https://5393-117-239-78-56.ngrok-free.app/webhooks/rest/webhook")
+                .url("http://157.245.110.5:5005/webhooks/rest/webhook")
                 .post(body)
                 .build();
 
@@ -177,7 +201,7 @@ public class RasaActivity extends AppCompatActivity {
                 String def="";
                 if (response.isSuccessful()) {
                     try {
-                        assert response.body() != null;
+//                        assert response.body() != null;
                         JSONArray jsonArray = new JSONArray(response.body().string());
                         if (jsonArray.length() > 0) {
                             for(int i=0;i<jsonArray.length();i++) {

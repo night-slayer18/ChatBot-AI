@@ -61,10 +61,11 @@ public class OpenaiActivity extends AppCompatActivity {
         vol = findViewById(R.id.button);
         logout_ai = findViewById(R.id.log1);
         //setup recycler view
-        messageAdapter = new MessageAdapter(messageList);
+        messageAdapter = new MessageAdapter(messageList,this);
         recyclerView.setAdapter(messageAdapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setStackFromEnd(true);
+//        llm.setStackFromEnd(true);
+        llm.setReverseLayout(false);
         recyclerView.setLayoutManager(llm);
 
         if(GeneralTextActivity.flag1==1){
@@ -146,7 +147,7 @@ public class OpenaiActivity extends AppCompatActivity {
         //okhttp
         messageList.add(new Message("Typing... ",Message.SENT_BY_BOT));
 
-        JSONObject jsonBody = new JSONObject();
+        /*JSONObject jsonBody = new JSONObject();
         try {
             jsonBody.put("model","text-davinci-003");
             jsonBody.put("prompt",question);
@@ -158,7 +159,7 @@ public class OpenaiActivity extends AppCompatActivity {
         RequestBody body = RequestBody.create(jsonBody.toString(),JSON);
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/completions")
-                .header("Authorization","Bearer your_private_key")
+                .header("Authorization","Bearer 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")
                 .post(body)
                 .build();
 
@@ -171,9 +172,8 @@ public class OpenaiActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if(response.isSuccessful()){
-                    JSONObject  jsonObject = null;
                     try {
-                        jsonObject = new JSONObject(response.body().string());
+                        JSONObject jsonObject = new JSONObject(response.body().string());
                         JSONArray jsonArray = jsonObject.getJSONArray("choices");
                         String result = jsonArray.getJSONObject(0).getString("text");
                         addResponse(result.trim());
@@ -184,6 +184,52 @@ public class OpenaiActivity extends AppCompatActivity {
 
                 }else{
                     addResponse("Failed to load response due to "+response.body().toString());
+                }
+            }
+        });*/
+        JSONObject jsonBody = new JSONObject();
+        JSONArray messagesArray = new JSONArray();
+        JSONObject message = new JSONObject();
+        try {
+            jsonBody.put("model","gpt-3.5-turbo");
+            message.put("role", "user");
+            message.put("content",question);
+            messagesArray.put(message);
+            jsonBody.put("messages",messagesArray);
+            jsonBody.put("max_tokens",4000);
+            jsonBody.put("temperature",0);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        RequestBody body = RequestBody.create(jsonBody.toString(),JSON);
+        Request request = new Request.Builder()
+                .url("https://api.openai.com/v1/chat/completions")
+                .header("Authorization","Bearer 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")
+                .post(body)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                addResponse("Failed to load response due to :"+e.getMessage());
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if(response.isSuccessful()){
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.body().string());
+                        JSONArray jsonArray = jsonObject.getJSONArray("choices");
+                        JSONObject firstChoice = jsonArray.getJSONObject(0);
+                        String result = firstChoice.getJSONObject("message").getString("content");
+                        addResponse(result.trim());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }else{
+                    addResponse("Failed to load response due to "+ response.body().toString());
                 }
             }
         });

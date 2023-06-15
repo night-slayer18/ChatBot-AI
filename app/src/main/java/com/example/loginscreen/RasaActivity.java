@@ -171,7 +171,7 @@ public class RasaActivity extends AppCompatActivity {
         }
         RequestBody body = RequestBody.create(jsonBody.toString(),JSON);
         Request request = new Request.Builder()
-                .url("http://157.245.110.5:5005/webhooks/rest/webhook")
+                .url("SERVER END POINT")
                 .post(body)
                 .build();
 

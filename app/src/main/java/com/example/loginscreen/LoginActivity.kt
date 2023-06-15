@@ -138,7 +138,7 @@ class LoginActivity : AppCompatActivity() {
     }*/
 
     private fun processError(msg: String?) {
-        showToast("Sorry network error$msg")
+        showToast("Email or Password Incorrect $msg")
     }
 
     private fun showToast(msg: String) {
